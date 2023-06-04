@@ -1,11 +1,14 @@
-<Activity mc:Ignorable="sap sap2010" x:Class="System1_ExtractClientInformation" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=System.Private.CoreLib" xmlns:uix="http://schemas.uipath.com/workflow/activities/uix" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+<Activity mc:Ignorable="sap sap2010" x:Class="System1_ExtractClientInformation" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=System.Private.CoreLib" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:uix="http://schemas.uipath.com/workflow/activities/uix" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
   <x:Members>
     <x:Property Name="in_WIID" Type="InArgument(x:String)" />
+    <x:Property Name="out_ClientCountry" Type="OutArgument(x:String)" />
+    <x:Property Name="out_ClientName" Type="OutArgument(x:String)" />
+    <x:Property Name="out_ClientID" Type="OutArgument(x:String)" />
   </x:Members>
   <VisualBasic.Settings>
     <x:Null />
   </VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>1234,865</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>1234,1283</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>System1_ExtractClientInformation_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <sco:Collection x:TypeArguments="x:String">
@@ -41,6 +44,9 @@
       <x:String>UiPath.UIAutomationNext.Activities.Models</x:String>
       <x:String>System.ComponentModel</x:String>
       <x:String>System.Reflection</x:String>
+      <x:String>UiPath.UIAutomationNext.Contracts</x:String>
+      <x:String>System.Runtime.Serialization</x:String>
+      <x:String>UiPath.UIAutomationNext.Models.CV</x:String>
     </sco:Collection>
   </TextExpression.NamespacesForImplementation>
   <TextExpression.ReferencesForImplementation>
@@ -86,27 +92,84 @@
       <AssemblyReference>System.Reflection.TypeExtensions</AssemblyReference>
       <AssemblyReference>System.Reflection.Metadata</AssemblyReference>
       <AssemblyReference>UiPath.Workflow</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities.Design</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities.ViewModels</AssemblyReference>
+      <AssemblyReference>System.Private.ServiceModel</AssemblyReference>
+      <AssemblyReference>System.Runtime.Serialization.Formatters</AssemblyReference>
+      <AssemblyReference>System.Private.DataContractSerialization</AssemblyReference>
+      <AssemblyReference>System.Runtime.Serialization.Primitives</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="System1ExtractClientInformation" sap:VirtualizedContainerService.HintSize="546,525" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence DisplayName="System1ExtractClientInformation" sap:VirtualizedContainerService.HintSize="546,1218" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <sap:WorkflowViewStateService.ViewState>
       <scg:Dictionary x:TypeArguments="x:String, x:Object">
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <uix:NApplicationCard AttachMode="ByInstance" DisplayName="Use Browser Edge: ACME System 1 - Work Items" sap:VirtualizedContainerService.HintSize="484,414" sap2010:WorkflowViewState.IdRef="NApplicationCard_1" InteractionMode="DebuggerApi" ScopeGuid="7775b196-b21b-4784-bf24-86ca8e638123" Version="V2">
+    <uix:NApplicationCard AttachMode="ByInstance" CloseMode="Never" DisplayName="Use Browser Edge: ACME System 1 - Work Items" sap:VirtualizedContainerService.HintSize="484,1107" sap2010:WorkflowViewState.IdRef="NApplicationCard_1" InteractionMode="DebuggerApi" OpenMode="IfNotOpen" ScopeGuid="7775b196-b21b-4784-bf24-86ca8e638123" Version="V2" WindowResize="Maximize">
       <uix:NApplicationCard.Body>
         <ActivityAction x:TypeArguments="x:Object">
           <ActivityAction.Argument>
             <DelegateInArgument x:TypeArguments="x:Object" Name="WSSessionData" />
           </ActivityAction.Argument>
-          <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="450,197" sap2010:WorkflowViewState.IdRef="Sequence_2">
+          <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="450,890" sap2010:WorkflowViewState.IdRef="Sequence_2">
             <sap:WorkflowViewStateService.ViewState>
               <scg:Dictionary x:TypeArguments="x:String, x:Object">
                 <x:Boolean x:Key="IsExpanded">True</x:Boolean>
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
-            <uix:NGoToUrl DisplayName="Go To URL" sap:VirtualizedContainerService.HintSize="388,82" sap2010:WorkflowViewState.IdRef="NGoToUrl_1" Url="[&quot;https://acme-test.uipath.com/work-items/&quot; + in_WIID]" Version="V3" />
+            <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="388,52" sap2010:WorkflowViewState.IdRef="CommentOut_1">
+              <ui:CommentOut.Body>
+                <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="450,193" sap2010:WorkflowViewState.IdRef="Sequence_3">
+                  <sap:WorkflowViewStateService.ViewState>
+                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                    </scg:Dictionary>
+                  </sap:WorkflowViewStateService.ViewState>
+                  <uix:NGoToUrl DisplayName="Go To URL" sap:VirtualizedContainerService.HintSize="388,82" sap2010:WorkflowViewState.IdRef="NGoToUrl_1" Url="[&quot;https://acme-test.uipath.com/work-items/&quot; + in_WIID]" Version="V3" />
+                </Sequence>
+              </ui:CommentOut.Body>
+              <sap:WorkflowViewStateService.ViewState>
+                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                  <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                  <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                </scg:Dictionary>
+              </sap:WorkflowViewStateService.ViewState>
+            </ui:CommentOut>
+            <uix:NGetText DisplayName="Get Text 'Client ID'" sap:VirtualizedContainerService.HintSize="388,157" sap2010:WorkflowViewState.IdRef="NGetText_1" ScopeIdentifier="7775b196-b21b-4784-bf24-86ca8e638123" TextString="[out_ClientID]" Version="V3">
+              <uix:NGetText.Target>
+                <uix:TargetAnchorable BrowserURL="https://acme-test.uipath.com/work-items/92470711" CvType="AnyWordGroup" DesignTimeRectangle="534, 414, 61, 13" DesignTimeScaleFactor="1" ElementType="Text" FriendlyName="'Client ID'" Guid="76273d3b-307a-420b-b43f-ec977e0b188b" InformativeScreenshot="17a2b849e9f73847789c52a17637f492.png" ScopeSelectorArgument="&lt;html app='msedge.exe' title='ACME System 1 - Work Items' /&gt;" SearchSteps="CV" TargetType="ComputerVisionBased" Version="V2" Visibility="Interactive">
+                  <uix:TargetAnchorable.Anchors>
+                    <scg:List x:TypeArguments="uix:ITarget" Capacity="1">
+                      <uix:Target CvTextArgument="Client ID:" CvType="Text" DesignTimeRectangle="472, 413, 61, 16" FriendlyName="'Client ID'" FullSelectorArgument="&lt;webctrl tag='B' aaname='Client ID:' innertext='Client ID:' /&gt;" FuzzySelectorArgument="&lt;webctrl tag='B' aaname='Client ID:' innertext='Client ID:' type='' class='' check:text='Client ID:' /&gt;" ImageBase64="iVBORw0KGgoAAAANSUhEUgAAAEEAAAAUCAYAAADStFABAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAFLSURBVFhH7ZTbkYMwDEXTE9WEUuJSGCrJ0EmGVhQ5kSxZfjFZNvuxOjP6AIN8fWy4gAMuAXEJiEtAXAJSSNiXGaZpUhVgo7EIj8/LXr0+hw2CmVez3WKuGdaHvq7UrdUhJ5PQbKYm/J1Fa6KAOOcJEmJdVxglFQn3QC/qyXdYr9SMrB45CXzvXRI2woHDssKcnuE5WYBUuL8GMloS8melV8rGazQnJEmoN0IeGFbZHEnIBXCJ2OauvYKdKQGxi+5L4B1vH0GmL6HShybm55MEGyyJ/vxzqG5g1ruOkZAf3Rp9CeVOpqJFl4Hpnb+XMGokgT6WQEG+KqFx/C3Hf4wUsi9h/Fl9T4JkL+QYRIJecFEyYV+CXNviIMclvIv7aloSqpX6Iv0fo1AuIt+RkYSI7aHHxhLy938kwX4GRyX8R1wC4hIQl4C4BAB4AkB710UC4d4tAAAAAElFTkSuQmCC" SearchSteps="Selector, FuzzySelector, Image, CV" />
+                    </scg:List>
+                  </uix:TargetAnchorable.Anchors>
+                </uix:TargetAnchorable>
+              </uix:NGetText.Target>
+            </uix:NGetText>
+            <uix:NGetText DisplayName="Get Text 'Client Name'" sap:VirtualizedContainerService.HintSize="388,157" sap2010:WorkflowViewState.IdRef="NGetText_2" ScopeIdentifier="7775b196-b21b-4784-bf24-86ca8e638123" TextString="[out_ClientName]" Version="V3">
+              <uix:NGetText.Target>
+                <uix:TargetAnchorable BrowserURL="https://acme-test.uipath.com/work-items/92470711" CvType="AnyWordGroup" DesignTimeRectangle="560, 434, 93, 16" DesignTimeScaleFactor="1" ElementType="Text" FriendlyName="'Client Name'" Guid="5d8d67d5-fe35-46fd-ad61-f55bd582250d" InformativeScreenshot="78e70abbf74710291a6e0bbccf0de96b.png" ScopeSelectorArgument="&lt;html app='msedge.exe' title='ACME System 1 - Work Items' /&gt;" SearchSteps="CV" TargetType="ComputerVisionBased" Version="V2" Visibility="Interactive">
+                  <uix:TargetAnchorable.Anchors>
+                    <scg:List x:TypeArguments="uix:ITarget" Capacity="1">
+                      <uix:Target CvTextArgument="Client Name:" CvType="Text" DesignTimeRectangle="470, 434, 87, 13" ElementType="Text" FriendlyName="'Client Name'" SearchSteps="CV" TargetType="ComputerVisionBased" />
+                    </scg:List>
+                  </uix:TargetAnchorable.Anchors>
+                </uix:TargetAnchorable>
+              </uix:NGetText.Target>
+            </uix:NGetText>
+            <uix:NGetText DisplayName="Get Text 'Client Country'" sap:VirtualizedContainerService.HintSize="388,157" sap2010:WorkflowViewState.IdRef="NGetText_3" ScopeIdentifier="7775b196-b21b-4784-bf24-86ca8e638123" TextString="[out_ClientCountry]" Version="V3">
+              <uix:NGetText.Target>
+                <uix:TargetAnchorable BrowserURL="https://acme-test.uipath.com/work-items/92470711" CvType="AnyWordGroup" DesignTimeRectangle="575, 454, 60, 16" DesignTimeScaleFactor="1" ElementType="Text" FriendlyName="'Client Country'" Guid="cd9ebba0-c5d1-483b-929c-6b8aaf970010" InformativeScreenshot="1af25076d9d6165f0a26ee3e3fcfe926.png" ScopeSelectorArgument="&lt;html app='msedge.exe' title='ACME System 1 - Work Items' /&gt;" SearchSteps="CV" TargetType="ComputerVisionBased" Version="V2" Visibility="Interactive">
+                  <uix:TargetAnchorable.Anchors>
+                    <scg:List x:TypeArguments="uix:ITarget" Capacity="1">
+                      <uix:Target CvTextArgument="Client Country:" CvType="Text" DesignTimeRectangle="472, 453, 101, 16" FriendlyName="'Client Country'" FullSelectorArgument="&lt;webctrl aaname='Client Country:' innertext='Client Country:' visibleinnertext='Client Country:' /&gt;" FuzzySelectorArgument="&lt;webctrl aaname='Client Country:' innertext='Client Country:' visibleinnertext='Client Country:' tag='B' type='' class='' check:text='Client Country:' /&gt;" ImageBase64="iVBORw0KGgoAAAANSUhEUgAAAGkAAAAUCAYAAACOPhMlAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAI4SURBVGhD7ZbbjcIwEEW3J1rhh1SwNZBSUCpBaBtBtOKNHV97Hn4FAiKSrzQfiR/juWcc+DFdX68OaQfqkHagDmkH6pB2IAXpcRnM4XAgMZqbH7PC+HB5JJ+30c2MIm9KtzM95xynyWx5inY9zHQazHT3jxuLQVJFh4gHeA8UKgvI5ixBsqbIMyLqcLcVzvIJSNcxUSQx47y8bblJeLcEPzwaYbxMZghzkBOAYoxXN8AU9mc3J65lDXSneebwdSxKNIT3Qdc3kbOhJt0sbh1ynkYz+vHj7zGOe0nvgjei5gApN8ElJGbIjXPPPKIJ2dvqzGuBVOhcazCFIAEhQj3tkFS4PSqQQsxn/QM45NZ1VCBhAb1FaZUhJfYRRQdIMBM3uGQckx8njZMTciF3PB+MWAEJ+QIArNFmxzm0kYQ3mNNQh4CU6E6hMiR9E0J4KLpbpOmNkLLjUGYeg5CYk4GEZ2V2yrsMAOzlahd5Smr73JEinobkD/w6pEJD2cLDPtJMrwqkcn3uzdOQwvu5YRcf6pfCqv2Pg09YLiJjDNHrkGJObgLWzSFurTYY+bEGZsXxt0Ai+7tQ42lFSHIDFvEAZUjxWQagtENaIppDxefwIHBhloyQK1/zekg+bINkIXF/ZG3am0UE0iJtMu/oHBSaUO5Bx+qQyoVQYa8Qqc6UoPCHBWLjc62rf5Nmha+Q378AKebTn7pmSF1vVglgRh3Sh5X68tTUIX1M5Hd0xS2y6pB2oA7p62XMPzRh0JYZxcwkAAAAAElFTkSuQmCC" SearchSteps="Selector, FuzzySelector, Image, CV" />
+                    </scg:List>
+                  </uix:TargetAnchorable.Anchors>
+                </uix:TargetAnchorable>
+              </uix:NGetText.Target>
+            </uix:NGetText>
+            <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="388,92" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Info" Message="[out_ClientID + out_ClientCountry + out_ClientName]" />
           </Sequence>
         </ActivityAction>
       </uix:NApplicationCard.Body>
