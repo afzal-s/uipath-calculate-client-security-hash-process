@@ -9,7 +9,7 @@
   <VisualBasic.Settings>
     <x:Null />
   </VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>1234,1030</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>1234,1102</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>AcmeSystem1Login_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <sco:Collection x:TypeArguments="x:String">
@@ -100,9 +100,10 @@
       <AssemblyReference>System.Private.Uri</AssemblyReference>
       <AssemblyReference>UiPath.System.Activities.Design</AssemblyReference>
       <AssemblyReference>UiPath.System.Activities.ViewModels</AssemblyReference>
+      <AssemblyReference>System.Memory.Data</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="AcmeSystem1Login" sap:VirtualizedContainerService.HintSize="730,965" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence DisplayName="AcmeSystem1Login" sap:VirtualizedContainerService.HintSize="919,1037" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="x:String" Name="AcmeSystem1Email" />
       <Variable x:TypeArguments="ss:SecureString" Name="AcmeSystem1Password" />
@@ -112,13 +113,13 @@
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <uix:NApplicationCard AttachMode="ByInstance" CloseMode="Never" DisplayName="Use Browser Edge: ACME System 1 - Log In" sap:VirtualizedContainerService.HintSize="668,854" sap2010:WorkflowViewState.IdRef="NApplicationCard_1" OpenMode="IfNotOpen" ScopeGuid="1bffd67c-53dd-4b9f-9464-8ad8f3697476" Version="V2">
+    <uix:NApplicationCard AttachMode="ByInstance" CloseMode="Never" DisplayName="Use Browser Edge: ACME System 1 - Log In" sap:VirtualizedContainerService.HintSize="857,926" sap2010:WorkflowViewState.IdRef="NApplicationCard_1" OpenMode="IfNotOpen" ScopeGuid="1bffd67c-53dd-4b9f-9464-8ad8f3697476" Version="V2">
       <uix:NApplicationCard.Body>
         <ActivityAction x:TypeArguments="x:Object">
           <ActivityAction.Argument>
             <DelegateInArgument x:TypeArguments="x:Object" Name="WSSessionData" />
           </ActivityAction.Argument>
-          <Flowchart DisplayName="Do" sap:VirtualizedContainerService.HintSize="634,637" sap2010:WorkflowViewState.IdRef="Flowchart_1">
+          <Flowchart DisplayName="Do" sap:VirtualizedContainerService.HintSize="823,709" sap2010:WorkflowViewState.IdRef="Flowchart_1">
             <Flowchart.Variables>
               <Variable x:TypeArguments="x:Boolean" Name="AcmeSystem1PortalAlreadyLoggedIn" />
               <Variable x:TypeArguments="x:Boolean" Name="AcmeSystem1PortalLoginPageExists" />
@@ -130,12 +131,14 @@
                 <av:Point x:Key="ShapeLocation">270,2.5</av:Point>
                 <av:Size x:Key="ShapeSize">60,75</av:Size>
                 <av:PointCollection x:Key="ConnectorLocation">300,77.5 300,127.5</av:PointCollection>
+                <x:Double x:Key="Width">789.1416666666667</x:Double>
+                <x:Double x:Key="Height">672</x:Double>
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
             <Flowchart.StartNode>
-              <x:Reference>__ReferenceID5</x:Reference>
+              <x:Reference>__ReferenceID10</x:Reference>
             </Flowchart.StartNode>
-            <FlowStep x:Name="__ReferenceID5">
+            <FlowStep x:Name="__ReferenceID10">
               <sap:WorkflowViewStateService.ViewState>
                 <scg:Dictionary x:TypeArguments="x:String, x:Object">
                   <av:Point x:Key="ShapeLocation">200,127.5</av:Point>
@@ -198,7 +201,7 @@
                               <av:Point x:Key="ShapeLocation">450.14166666666665,349</av:Point>
                               <av:Size x:Key="ShapeSize">79,87</av:Size>
                               <av:PointCollection x:Key="TrueConnector">450.14166666666665,392.5 400.14166666666665,392.5</av:PointCollection>
-                              <av:PointCollection x:Key="FalseConnector">349.64166666666665,283 399.64166666666665,283</av:PointCollection>
+                              <av:PointCollection x:Key="FalseConnector">529.1416666666667,392.5 579.1416666666667,392.5</av:PointCollection>
                             </scg:Dictionary>
                           </sap:WorkflowViewStateService.ViewState>
                           <FlowDecision.True>
@@ -207,6 +210,7 @@
                                 <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                   <av:Point x:Key="ShapeLocation">200.14166666666665,352</av:Point>
                                   <av:Size x:Key="ShapeSize">200,81</av:Size>
+                                  <av:PointCollection x:Key="ConnectorLocation">300.14166666666665,433 300.14166666666665,483</av:PointCollection>
                                 </scg:Dictionary>
                               </sap:WorkflowViewStateService.ViewState>
                               <Sequence DisplayName="Target appears" sap:VirtualizedContainerService.HintSize="200,81" sap2010:WorkflowViewState.IdRef="Sequence_11">
@@ -251,8 +255,88 @@
                                   </uix:NClick.Target>
                                 </uix:NClick>
                               </Sequence>
+                              <FlowStep.Next>
+                                <FlowStep x:Name="__ReferenceID6">
+                                  <sap:WorkflowViewStateService.ViewState>
+                                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                      <av:Point x:Key="ShapeLocation">200.14166666666665,483</av:Point>
+                                      <av:Size x:Key="ShapeSize">200,52</av:Size>
+                                      <av:PointCollection x:Key="ConnectorLocation">300.14166666666665,535 300.14166666666665,585</av:PointCollection>
+                                    </scg:Dictionary>
+                                  </sap:WorkflowViewStateService.ViewState>
+                                  <uix:NCheckState DisplayName="Check App State 'Dashboard'" EnableIfExists="False" EnableIfNotExists="False" Exists="[AcmeSystem1PortalAlreadyLoggedIn]" sap:VirtualizedContainerService.HintSize="200,52" sap2010:WorkflowViewState.IdRef="NCheckState_6" ScopeIdentifier="1bffd67c-53dd-4b9f-9464-8ad8f3697476" Version="V3">
+                                    <uix:NCheckState.Target>
+                                      <uix:TargetAnchorable BrowserURL="https://acme-test.uipath.com/home" CvTextArgument="Dashboard" CvType="Text" DesignTimeRectangle="363, 169, 1140, 50" DesignTimeScaleFactor="1" ElementType="Text" FriendlyName="'Dashboard'" FullSelectorArgument="&lt;webctrl tag='H1' innertext='*Dashboard*' /&gt;" FuzzySelectorArgument="&lt;webctrl tag='H1' innertext='*Dashboard*' type='' class='page-header' aaname='                                                 Dashboard                                     ' check:text='Dashboard' /&gt;" Guid="334e10ae-90f0-452c-bf03-a48abb3c15bd" ImageBase64="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" InformativeScreenshot="24485ecef6bb7a56be7933c2e410d433.png" ScopeSelectorArgument="&lt;html app='msedge.exe' title='ACME System 1 - Dashboard' /&gt;" SearchSteps="Selector, FuzzySelector, CV" Version="V2" Visibility="Interactive" />
+                                    </uix:NCheckState.Target>
+                                    <sap:WorkflowViewStateService.ViewState>
+                                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                        <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                                        <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                      </scg:Dictionary>
+                                    </sap:WorkflowViewStateService.ViewState>
+                                  </uix:NCheckState>
+                                  <FlowStep.Next>
+                                    <FlowDecision x:Name="__ReferenceID7" Condition="[AcmeSystem1PortalAlreadyLoggedIn]" DisplayName="Flow Decision" sap:VirtualizedContainerService.HintSize="79,87" sap2010:WorkflowViewState.IdRef="FlowDecision_3">
+                                      <sap:WorkflowViewStateService.ViewState>
+                                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                          <av:Point x:Key="ShapeLocation">260.64166666666665,585</av:Point>
+                                          <av:Size x:Key="ShapeSize">79,87</av:Size>
+                                          <av:PointCollection x:Key="TrueConnector">260.64166666666665,628.5 210.64166666666665,628.5</av:PointCollection>
+                                          <av:PointCollection x:Key="FalseConnector">339.64166666666665,628.5 389.64166666666665,628.5</av:PointCollection>
+                                        </scg:Dictionary>
+                                      </sap:WorkflowViewStateService.ViewState>
+                                      <FlowDecision.True>
+                                        <FlowStep x:Name="__ReferenceID8">
+                                          <sap:WorkflowViewStateService.ViewState>
+                                            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                              <av:Point x:Key="ShapeLocation">10.641666666666652,602.5</av:Point>
+                                              <av:Size x:Key="ShapeSize">200,52</av:Size>
+                                            </scg:Dictionary>
+                                          </sap:WorkflowViewStateService.ViewState>
+                                          <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="200,52" sap2010:WorkflowViewState.IdRef="LogMessage_8" Level="Info" Message="[&quot;Login success&quot;]" />
+                                        </FlowStep>
+                                      </FlowDecision.True>
+                                      <FlowDecision.False>
+                                        <FlowStep x:Name="__ReferenceID9">
+                                          <sap:WorkflowViewStateService.ViewState>
+                                            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                              <av:Point x:Key="ShapeLocation">389.64166666666665,602.5</av:Point>
+                                              <av:Size x:Key="ShapeSize">200,52</av:Size>
+                                            </scg:Dictionary>
+                                          </sap:WorkflowViewStateService.ViewState>
+                                          <ui:CommentOut sap:VirtualizedContainerService.HintSize="200,52" sap2010:WorkflowViewState.IdRef="CommentOut_1">
+                                            <ui:CommentOut.Body>
+                                              <Sequence DisplayName="Ignored Activities" sap2010:WorkflowViewState.IdRef="Sequence_12">
+                                                <Throw sap:VirtualizedContainerService.HintSize="200,52" sap2010:WorkflowViewState.IdRef="Throw_2" />
+                                              </Sequence>
+                                            </ui:CommentOut.Body>
+                                          </ui:CommentOut>
+                                        </FlowStep>
+                                      </FlowDecision.False>
+                                    </FlowDecision>
+                                  </FlowStep.Next>
+                                </FlowStep>
+                              </FlowStep.Next>
                             </FlowStep>
                           </FlowDecision.True>
+                          <FlowDecision.False>
+                            <FlowStep x:Name="__ReferenceID5">
+                              <sap:WorkflowViewStateService.ViewState>
+                                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                  <av:Point x:Key="ShapeLocation">579.1416666666667,366.5</av:Point>
+                                  <av:Size x:Key="ShapeSize">200,52</av:Size>
+                                </scg:Dictionary>
+                              </sap:WorkflowViewStateService.ViewState>
+                              <ui:CommentOut sap:VirtualizedContainerService.HintSize="200,52" sap2010:WorkflowViewState.IdRef="CommentOut_2">
+                                <ui:CommentOut.Body>
+                                  <Sequence DisplayName="Ignored Activities" sap2010:WorkflowViewState.IdRef="Sequence_13">
+                                    <Throw sap:VirtualizedContainerService.HintSize="200,52" sap2010:WorkflowViewState.IdRef="Throw_1" />
+                                  </Sequence>
+                                </ui:CommentOut.Body>
+                              </ui:CommentOut>
+                            </FlowStep>
+                          </FlowDecision.False>
                         </FlowDecision>
                       </FlowStep.Next>
                     </FlowStep>
@@ -265,6 +349,11 @@
             <x:Reference>__ReferenceID2</x:Reference>
             <x:Reference>__ReferenceID3</x:Reference>
             <x:Reference>__ReferenceID4</x:Reference>
+            <x:Reference>__ReferenceID5</x:Reference>
+            <x:Reference>__ReferenceID6</x:Reference>
+            <x:Reference>__ReferenceID7</x:Reference>
+            <x:Reference>__ReferenceID8</x:Reference>
+            <x:Reference>__ReferenceID9</x:Reference>
           </Flowchart>
         </ActivityAction>
       </uix:NApplicationCard.Body>
