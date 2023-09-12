@@ -1,5 +1,6 @@
 {
   "name": "Calculate Client Security Hash",
+  "projectId": "4609f392-eed0-4d4e-88c7-a721c7a51670",
   "description": "Generate the Security Hash for each Client based on their\r\npersonal information.",
   "main": "Main.xaml",
   "dependencies": {

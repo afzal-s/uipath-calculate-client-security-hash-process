@@ -1,11 +1,31 @@
-<Activity mc:Ignorable="sap sap2010" x:Class="SHA1Open" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=System.Private.CoreLib" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:uix="http://schemas.uipath.com/workflow/activities/uix" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+<Activity mc:Ignorable="sap sap2010" x:Class="SHA1Open" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=System.Private.CoreLib" xmlns:this="clr-namespace:" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:uix="http://schemas.uipath.com/workflow/activities/uix" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
   <x:Members>
     <x:Property Name="in_SHA1URL" Type="InArgument(x:String)" />
+    <x:Property Name="in_ExceptionScreenshotFolderPath" Type="InArgument(x:String)" />
+    <x:Property Name="in_OutlookAccount" Type="InArgument(x:String)" />
+    <x:Property Name="in_OutlookCc" Type="InArgument(x:String)" />
+    <x:Property Name="in_OutlookTo" Type="InArgument(x:String)" />
+    <x:Property Name="in_Config" Type="InArgument(scg:Dictionary(x:String, x:Object))" />
   </x:Members>
+  <this:SHA1Open.in_ExceptionScreenshotFolderPath>
+    <InArgument x:TypeArguments="x:String" />
+  </this:SHA1Open.in_ExceptionScreenshotFolderPath>
+  <this:SHA1Open.in_OutlookAccount>
+    <InArgument x:TypeArguments="x:String" />
+  </this:SHA1Open.in_OutlookAccount>
+  <this:SHA1Open.in_OutlookCc>
+    <InArgument x:TypeArguments="x:String" />
+  </this:SHA1Open.in_OutlookCc>
+  <this:SHA1Open.in_OutlookTo>
+    <InArgument x:TypeArguments="x:String" />
+  </this:SHA1Open.in_OutlookTo>
+  <this:SHA1Open.in_Config>
+    <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" />
+  </this:SHA1Open.in_Config>
   <VisualBasic.Settings>
     <x:Null />
   </VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>1234,865</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>1254,1845</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>SHA1Open_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <sco:Collection x:TypeArguments="x:String">
@@ -39,6 +59,8 @@
       <x:String>UiPath.Platform.ObjectLibrary</x:String>
       <x:String>UiPath.Shared.Activities</x:String>
       <x:String>System.Reflection</x:String>
+      <x:String>System.ComponentModel</x:String>
+      <x:String>System.Runtime.Serialization</x:String>
     </sco:Collection>
   </TextExpression.NamespacesForImplementation>
   <TextExpression.ReferencesForImplementation>
@@ -81,32 +103,123 @@
       <AssemblyReference>System.ComponentModel</AssemblyReference>
       <AssemblyReference>System.Memory</AssemblyReference>
       <AssemblyReference>System.Private.Uri</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.EventBasedAsync</AssemblyReference>
+      <AssemblyReference>PresentationFramework</AssemblyReference>
+      <AssemblyReference>WindowsBase</AssemblyReference>
+      <AssemblyReference>Microsoft.Win32.Primitives</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.Primitives</AssemblyReference>
+      <AssemblyReference>System.Memory.Data</AssemblyReference>
+      <AssemblyReference>System.Private.ServiceModel</AssemblyReference>
+      <AssemblyReference>System.Runtime.Serialization.Formatters</AssemblyReference>
+      <AssemblyReference>System.Private.DataContractSerialization</AssemblyReference>
+      <AssemblyReference>System.Runtime.Serialization.Primitives</AssemblyReference>
+      <AssemblyReference>System.Collections</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="SHA1Open" sap:VirtualizedContainerService.HintSize="546,535" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence DisplayName="SHA1Open" sap:VirtualizedContainerService.HintSize="684,1780" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <sap:WorkflowViewStateService.ViewState>
       <scg:Dictionary x:TypeArguments="x:String, x:Object">
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <uix:NApplicationCard AttachMode="ByInstance" CloseMode="Never" DisplayName="Use Browser Edge: SHA1 online" sap:VirtualizedContainerService.HintSize="484,424" sap2010:WorkflowViewState.IdRef="NApplicationCard_1" InteractionMode="DebuggerApi" OpenMode="IfNotOpen" ScopeGuid="0de8fdd2-673f-4f11-b6eb-7d9487439150" Version="V2" WindowResize="Maximize">
+    <uix:NApplicationCard AttachMode="ByInstance" CloseMode="Never" DisplayName="Use Browser Edge: SHA-1 Hash Generator Online Tool" sap:VirtualizedContainerService.HintSize="622,1669" sap2010:WorkflowViewState.IdRef="NApplicationCard_1" InteractionMode="DebuggerApi" OpenMode="IfNotOpen" ScopeGuid="0de8fdd2-673f-4f11-b6eb-7d9487439150" Version="V2" WindowResize="Maximize">
       <uix:NApplicationCard.Body>
         <ActivityAction x:TypeArguments="x:Object">
           <ActivityAction.Argument>
             <DelegateInArgument x:TypeArguments="x:Object" Name="WSSessionData" />
           </ActivityAction.Argument>
-          <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="450,207" sap2010:WorkflowViewState.IdRef="Sequence_2">
+          <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="588,1452" sap2010:WorkflowViewState.IdRef="Sequence_2">
+            <Sequence.Variables>
+              <Variable x:TypeArguments="x:Boolean" Name="SHA1HomePageExists" />
+            </Sequence.Variables>
             <sap:WorkflowViewStateService.ViewState>
               <scg:Dictionary x:TypeArguments="x:String, x:Object">
                 <x:Boolean x:Key="IsExpanded">True</x:Boolean>
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
-            <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="388,92" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Info" Message="[&quot;Opened SHA1 online portal&quot;]" />
+            <uix:NCheckState DisplayName="Check App State 'SHA1 home page'" EnableIfExists="False" EnableIfNotExists="False" Exists="[SHA1HomePageExists]" sap:VirtualizedContainerService.HintSize="526,177" sap2010:WorkflowViewState.IdRef="NCheckState_1" ScopeIdentifier="0de8fdd2-673f-4f11-b6eb-7d9487439150" Version="V3">
+              <uix:NCheckState.IfExists>
+                <Sequence DisplayName="Target appears" sap:VirtualizedContainerService.HintSize="450,105" sap2010:WorkflowViewState.IdRef="Sequence_3">
+                  <sap:WorkflowViewStateService.ViewState>
+                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                    </scg:Dictionary>
+                  </sap:WorkflowViewStateService.ViewState>
+                </Sequence>
+              </uix:NCheckState.IfExists>
+              <uix:NCheckState.IfNotExists>
+                <Sequence DisplayName="Target does not appear" sap:VirtualizedContainerService.HintSize="450,105" sap2010:WorkflowViewState.IdRef="Sequence_4">
+                  <sap:WorkflowViewStateService.ViewState>
+                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                    </scg:Dictionary>
+                  </sap:WorkflowViewStateService.ViewState>
+                </Sequence>
+              </uix:NCheckState.IfNotExists>
+              <uix:NCheckState.Target>
+                <uix:TargetAnchorable BrowserURL="https://codebeautify.org/sha1-hash-generator" CvTextArgument="SHA-1 Hash Generator" CvType="Text" DesignTimeRectangle="492, 200, 429, 45" DesignTimeScaleFactor="1" ElementType="Text" FriendlyName="'SHA-1 Hash Generator'" FullSelectorArgument="&lt;webctrl aaname='SHA-1 Hash Generator' innertext='SHA-1 Hash Generator' /&gt;" FuzzySelectorArgument="&lt;webctrl aaname='SHA-1 Hash Generator' innertext='SHA-1 Hash Generator' tag='H1' type='' class='title is-size-2' check:text='SHA-1 Hash Generator' /&gt;" Guid="a40ec37c-e2c6-4d55-bd4c-c9ef2e21714a" ImageBase64="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" InformativeScreenshot="e874a4c10a5fcc7fab8935c72fa59ca7.png" ScopeSelectorArgument="&lt;html app='msedge.exe' title='SHA-1 Hash Generator Online Tool' /&gt;" SearchSteps="Selector, CV" Version="V2" Visibility="Interactive" />
+              </uix:NCheckState.Target>
+            </uix:NCheckState>
+            <If Condition="[SHA1HomePageExists]" sap:VirtualizedContainerService.HintSize="526,1120" sap2010:WorkflowViewState.IdRef="If_1">
+              <If.Then>
+                <Sequence sap:VirtualizedContainerService.HintSize="376,180" sap2010:WorkflowViewState.IdRef="Sequence_5">
+                  <sap:WorkflowViewStateService.ViewState>
+                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                    </scg:Dictionary>
+                  </sap:WorkflowViewStateService.ViewState>
+                  <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="334,92" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Info" Message="[&quot;Opened SHA1 online portal&quot;]" />
+                </Sequence>
+              </If.Then>
+              <If.Else>
+                <Sequence sap:VirtualizedContainerService.HintSize="492,758" sap2010:WorkflowViewState.IdRef="Sequence_6">
+                  <sap:WorkflowViewStateService.ViewState>
+                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                    </scg:Dictionary>
+                  </sap:WorkflowViewStateService.ViewState>
+                  <Sequence sap2010:Annotation.AnnotationText="Throwing error and sending failure mail with screenshot" DisplayName="SHA1 - home page isn't responding" sap:VirtualizedContainerService.HintSize="450,670" sap2010:WorkflowViewState.IdRef="Sequence_7">
+                    <Sequence.Variables>
+                      <Variable x:TypeArguments="x:String" Name="Screenshot" />
+                    </Sequence.Variables>
+                    <sap:WorkflowViewStateService.ViewState>
+                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                        <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                      </scg:Dictionary>
+                    </sap:WorkflowViewStateService.ViewState>
+                    <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="388,92" sap2010:WorkflowViewState.IdRef="LogMessage_2" Level="Info" Message="[&quot;SHA1 home page isn't responding&quot;]" />
+                    <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Framework\TakeScreenshot.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="388,113" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_2" UnSafe="False" WorkflowFileName="Framework\TakeScreenshot.xaml">
+                      <ui:InvokeWorkflowFile.Arguments>
+                        <InArgument x:TypeArguments="x:String" x:Key="in_Folder">[in_ExceptionScreenshotFolderPath]</InArgument>
+                        <InOutArgument x:TypeArguments="x:String" x:Key="io_FilePath">[Screenshot]</InOutArgument>
+                      </ui:InvokeWorkflowFile.Arguments>
+                      <sap:WorkflowViewStateService.ViewState>
+                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                        </scg:Dictionary>
+                      </sap:WorkflowViewStateService.ViewState>
+                    </ui:InvokeWorkflowFile>
+                    <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Common\SendEmail.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="388,113" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_3" UnSafe="False" WorkflowFileName="Common\SendEmail.xaml">
+                      <ui:InvokeWorkflowFile.Arguments>
+                        <InArgument x:TypeArguments="x:String" x:Key="in_OutlookBody">[in_Config("Body_SHA1HomePageNotResponding").ToString]</InArgument>
+                        <InArgument x:TypeArguments="x:String" x:Key="in_OutlookSubject">[in_Config("Subject_Failure").ToString]</InArgument>
+                        <InArgument x:TypeArguments="x:String" x:Key="in_OutlookTo">[in_OutlookTo]</InArgument>
+                        <InArgument x:TypeArguments="x:String" x:Key="in_OutlookCc">[in_OutlookCc]</InArgument>
+                        <InArgument x:TypeArguments="x:String" x:Key="in_OutlookAttachment">[Screenshot]</InArgument>
+                        <InArgument x:TypeArguments="x:String" x:Key="in_OutlookAccount">[in_OutlookAccount]</InArgument>
+                      </ui:InvokeWorkflowFile.Arguments>
+                    </ui:InvokeWorkflowFile>
+                    <Throw Exception="[New SelectorNotFoundException(&quot;SHA1 home page isn't responding&quot;)]" sap:VirtualizedContainerService.HintSize="388,90" sap2010:WorkflowViewState.IdRef="Throw_1" />
+                  </Sequence>
+                </Sequence>
+              </If.Else>
+            </If>
           </Sequence>
         </ActivityAction>
       </uix:NApplicationCard.Body>
       <uix:NApplicationCard.TargetApp>
-        <uix:TargetApp Area="-8, -8, 1936, 1096" BrowserType="Edge" IconBase64="iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAABmSURBVDhPrczRDYAgDIRhH5nAFdx/B1zGJTBHcqY2FNrqw5ejCfm369wblaOG9QAevwWwJD9ahgG5K8sAlnBrroBcLRzAEu5UQO6nAKQDFAoQbnIHLNMA8fOIGfB6BUh/mnkCObXdA5Q5fU2oWVYAAAAASUVORK5CYII=" InformativeScreenshot="206eb0732b6685a065d7eb5383a8970d.jpg" Selector="&lt;html app='msedge.exe' title='SHA1 online' /&gt;" Title="SHA1 online" Url="[in_SHA1URL]" />
+        <uix:TargetApp Area="-8, -8, 1936, 1096" BrowserType="Edge" IconBase64="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" InformativeScreenshot="e1bc07f8f8d7dc52923349d04cf39a03.jpg" Selector="&lt;html app='msedge.exe' title='SHA-1 Hash Generator Online Tool' /&gt;" Title="SHA1 online" Url="[in_SHA1URL]" />
       </uix:NApplicationCard.TargetApp>
     </uix:NApplicationCard>
   </Sequence>

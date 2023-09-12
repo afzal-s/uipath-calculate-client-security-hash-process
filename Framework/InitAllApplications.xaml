@@ -5,7 +5,7 @@
   <VisualBasic.Settings>
     <x:Null />
   </VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>1234,865</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>1254,865</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>Initialization_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <sco:Collection x:TypeArguments="x:String">
@@ -104,7 +104,22 @@
           <VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_Config(&quot;AcmeSystem1Credentials&quot;).ToString" />
         </InArgument>
         <InArgument x:TypeArguments="x:String" x:Key="in_AcmeSystem1URL">
-          <VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_Config(&quot;AcmeSystemLoginPageURL&quot;).ToString" />
+          <VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_Config(&quot;AcmeSystem1LoginPageURL&quot;).ToString" />
+        </InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_ExceptionScreenshotFolderPath">
+          <VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_Config(&quot;ExceptionScreenshotFolderPath&quot;).ToString" />
+        </InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_OutlookAccount">
+          <VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_Config(&quot;OutlookAccount&quot;).ToString" />
+        </InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_OutlookCc">
+          <VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_Config(&quot;CCAddress&quot;).ToString" />
+        </InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_OutlookTo">
+          <VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_Config(&quot;TOAddress&quot;).ToString" />
+        </InArgument>
+        <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_Config">
+          <VisualBasicValue x:TypeArguments="scg:Dictionary(x:String, x:Object)" ExpressionText="in_Config" />
         </InArgument>
       </ui:InvokeWorkflowFile.Arguments>
     </ui:InvokeWorkflowFile>
@@ -112,6 +127,21 @@
       <ui:InvokeWorkflowFile.Arguments>
         <InArgument x:TypeArguments="x:String" x:Key="in_SHA1URL">
           <VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_Config(&quot;SHA1LoginPageURL&quot;).ToString" />
+        </InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_ExceptionScreenshotFolderPath">
+          <VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_Config(&quot;ExceptionScreenshotFolderPath&quot;).ToString" />
+        </InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_OutlookAccount">
+          <VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_Config(&quot;OutlookAccount&quot;).ToString" />
+        </InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_OutlookCc">
+          <VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_Config(&quot;CCAddress&quot;).ToString" />
+        </InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_OutlookTo">
+          <VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_Config(&quot;TOAddress&quot;).ToString" />
+        </InArgument>
+        <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_Config">
+          <VisualBasicValue x:TypeArguments="scg:Dictionary(x:String, x:Object)" ExpressionText="in_Config" />
         </InArgument>
       </ui:InvokeWorkflowFile.Arguments>
     </ui:InvokeWorkflowFile>

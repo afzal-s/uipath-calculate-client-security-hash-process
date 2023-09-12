@@ -1,18 +1,38 @@
 <Activity mc:Ignorable="sap sap2010" x:Class="AcmeSystem1NavigateToDashboard" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=System.Private.CoreLib" xmlns:this="clr-namespace:" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:uix="http://schemas.uipath.com/workflow/activities/uix" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
   <x:Members>
     <x:Property Name="in_AcmeSystem1DashboardPageURL" Type="InArgument(x:String)" />
-    <x:Property Name="in_AcmeSystem1WorkItermPageURL" Type="InArgument(x:String)" />
+    <x:Property Name="in_ExceptionScreenshotFolderPath" Type="InArgument(x:String)" />
+    <x:Property Name="in_OutlookAccount" Type="InArgument(x:String)" />
+    <x:Property Name="in_OutlookCc" Type="InArgument(x:String)" />
+    <x:Property Name="in_OutlookTo" Type="InArgument(x:String)" />
+    <x:Property Name="in_Config" Type="InArgument(scg:Dictionary(x:String, x:Object))" />
+    <x:Property Name="in_AcmeSystem1WorkItemPageURL" Type="InArgument(x:String)" />
   </x:Members>
   <this:AcmeSystem1NavigateToDashboard.in_AcmeSystem1DashboardPageURL>
     <InArgument x:TypeArguments="x:String" />
   </this:AcmeSystem1NavigateToDashboard.in_AcmeSystem1DashboardPageURL>
-  <this:AcmeSystem1NavigateToDashboard.in_AcmeSystem1WorkItermPageURL>
+  <this:AcmeSystem1NavigateToDashboard.in_ExceptionScreenshotFolderPath>
     <InArgument x:TypeArguments="x:String" />
-  </this:AcmeSystem1NavigateToDashboard.in_AcmeSystem1WorkItermPageURL>
+  </this:AcmeSystem1NavigateToDashboard.in_ExceptionScreenshotFolderPath>
+  <this:AcmeSystem1NavigateToDashboard.in_OutlookAccount>
+    <InArgument x:TypeArguments="x:String" />
+  </this:AcmeSystem1NavigateToDashboard.in_OutlookAccount>
+  <this:AcmeSystem1NavigateToDashboard.in_OutlookCc>
+    <InArgument x:TypeArguments="x:String" />
+  </this:AcmeSystem1NavigateToDashboard.in_OutlookCc>
+  <this:AcmeSystem1NavigateToDashboard.in_OutlookTo>
+    <InArgument x:TypeArguments="x:String" />
+  </this:AcmeSystem1NavigateToDashboard.in_OutlookTo>
+  <this:AcmeSystem1NavigateToDashboard.in_Config>
+    <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" />
+  </this:AcmeSystem1NavigateToDashboard.in_Config>
+  <this:AcmeSystem1NavigateToDashboard.in_AcmeSystem1WorkItemPageURL>
+    <InArgument x:TypeArguments="x:String" />
+  </this:AcmeSystem1NavigateToDashboard.in_AcmeSystem1WorkItemPageURL>
   <VisualBasic.Settings>
     <x:Null />
   </VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>1234,1054</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>1254,1521</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>AcmeSystem1NavigateToDashboard_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <sco:Collection x:TypeArguments="x:String">
@@ -101,15 +121,17 @@
       <AssemblyReference>System.ComponentModel.Primitives</AssemblyReference>
       <AssemblyReference>UiPath.System.Activities.Design</AssemblyReference>
       <AssemblyReference>UiPath.System.Activities.ViewModels</AssemblyReference>
+      <AssemblyReference>System.Memory.Data</AssemblyReference>
+      <AssemblyReference>System.Collections</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="AcmeSystem1NavigateToWIDetails" sap:VirtualizedContainerService.HintSize="1016,989" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence DisplayName="AcmeSystem1NavigateToWIDetails" sap:VirtualizedContainerService.HintSize="900,1456" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <sap:WorkflowViewStateService.ViewState>
       <scg:Dictionary x:TypeArguments="x:String, x:Object">
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <uix:NApplicationCard AttachMode="ByInstance" CloseMode="Never" DisplayName="Use Browser Edge: ACME System 1 - Dashboard" sap:VirtualizedContainerService.HintSize="954,414" sap2010:WorkflowViewState.IdRef="NApplicationCard_3" OpenMode="IfNotOpen" ScopeGuid="e85a3799-cd90-48bd-aa42-785fac86915f" Version="V2" WindowResize="Maximize">
+    <uix:NApplicationCard AttachMode="ByInstance" CloseMode="Never" DisplayName="Use Browser Edge: ACME System 1 - Dashboard" sap:VirtualizedContainerService.HintSize="838,414" sap2010:WorkflowViewState.IdRef="NApplicationCard_3" OpenMode="IfNotOpen" ScopeGuid="e85a3799-cd90-48bd-aa42-785fac86915f" Version="V2" WindowResize="Maximize">
       <uix:NApplicationCard.Body>
         <ActivityAction x:TypeArguments="x:Object">
           <ActivityAction.Argument>
@@ -121,7 +143,7 @@
                 <x:Boolean x:Key="IsExpanded">True</x:Boolean>
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
-            <uix:NGoToUrl DisplayName="Go To URL" sap:VirtualizedContainerService.HintSize="388,82" sap2010:WorkflowViewState.IdRef="NGoToUrl_1" Url="[in_AcmeSystem1WorkItermPageURL]" Version="V3" />
+            <uix:NGoToUrl DisplayName="Go To URL" sap:VirtualizedContainerService.HintSize="388,82" sap2010:WorkflowViewState.IdRef="NGoToUrl_1" Url="[in_AcmeSystem1WorkItemPageURL]" Version="V3" />
           </Sequence>
         </ActivityAction>
       </uix:NApplicationCard.Body>
@@ -135,25 +157,57 @@
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
     </uix:NApplicationCard>
-    <uix:NCheckState DisplayName="Check App State 'Work Items'" sap:VirtualizedContainerService.HintSize="954,424" sap2010:WorkflowViewState.IdRef="NCheckState_2" ScopeIdentifier="e85a3799-cd90-48bd-aa42-785fac86915f" Version="V3">
+    <uix:NCheckState DisplayName="Check App State 'Work Items'" sap:VirtualizedContainerService.HintSize="838,891" sap2010:WorkflowViewState.IdRef="NCheckState_2" ScopeIdentifier="e85a3799-cd90-48bd-aa42-785fac86915f" Version="V3">
       <uix:NCheckState.IfExists>
-        <Sequence DisplayName="Target appears" sap:VirtualizedContainerService.HintSize="450,207" sap2010:WorkflowViewState.IdRef="Sequence_5">
-          <sap:WorkflowViewStateService.ViewState>
-            <scg:Dictionary x:TypeArguments="x:String, x:Object">
-              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-            </scg:Dictionary>
-          </sap:WorkflowViewStateService.ViewState>
-          <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="388,92" sap2010:WorkflowViewState.IdRef="LogMessage_3" Level="Info" Message="[&quot;Navigation to wi success&quot;]" />
-        </Sequence>
+        <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="334,92" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Info" Message="[&quot;Navigating to work items page - Success&quot;]" />
       </uix:NCheckState.IfExists>
       <uix:NCheckState.IfNotExists>
-        <Sequence DisplayName="Target does not appear" sap:VirtualizedContainerService.HintSize="450,207" sap2010:WorkflowViewState.IdRef="Sequence_6">
+        <Sequence sap2010:Annotation.AnnotationText="Throwing error and sending failure mail with screenshot" DisplayName="Acme System1 - Unable to navigate on &quot;work items&quot; page" sap:VirtualizedContainerService.HintSize="450,674" sap2010:WorkflowViewState.IdRef="Sequence_8">
+          <Sequence.Variables>
+            <Variable x:TypeArguments="x:String" Name="Screenshot" />
+          </Sequence.Variables>
           <sap:WorkflowViewStateService.ViewState>
             <scg:Dictionary x:TypeArguments="x:String, x:Object">
               <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+              <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+              <x:Boolean x:Key="IsPinned">False</x:Boolean>
             </scg:Dictionary>
           </sap:WorkflowViewStateService.ViewState>
-          <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="388,92" sap2010:WorkflowViewState.IdRef="LogMessage_4" Level="Error" Message="[&quot;Navigation to wi failed&quot;]" />
+          <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="388,92" sap2010:WorkflowViewState.IdRef="LogMessage_2" Level="Error" Message="[&quot;Navigating to work items page - Failed&quot;]" />
+          <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Framework\TakeScreenshot.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="388,113" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_3" UnSafe="False" WorkflowFileName="Framework\TakeScreenshot.xaml">
+            <ui:InvokeWorkflowFile.Arguments>
+              <InArgument x:TypeArguments="x:String" x:Key="in_Folder">[in_ExceptionScreenshotFolderPath]</InArgument>
+              <InOutArgument x:TypeArguments="x:String" x:Key="io_FilePath">[Screenshot]</InOutArgument>
+            </ui:InvokeWorkflowFile.Arguments>
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+          </ui:InvokeWorkflowFile>
+          <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Common\SendEmail.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="388,113" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_4" UnSafe="False" WorkflowFileName="Common\SendEmail.xaml">
+            <ui:InvokeWorkflowFile.Arguments>
+              <InArgument x:TypeArguments="x:String" x:Key="in_OutlookBody">
+                <VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_Config(&quot;Body_ACMESystemUnableToNavigateWorkItemsPage&quot;).ToString" />
+              </InArgument>
+              <InArgument x:TypeArguments="x:String" x:Key="in_OutlookSubject">
+                <VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_Config(&quot;Subject_Failure&quot;).ToString" />
+              </InArgument>
+              <InArgument x:TypeArguments="x:String" x:Key="in_OutlookTo">
+                <VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_OutlookTo" />
+              </InArgument>
+              <InArgument x:TypeArguments="x:String" x:Key="in_OutlookCc">
+                <VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_OutlookCc" />
+              </InArgument>
+              <InArgument x:TypeArguments="x:String" x:Key="in_OutlookAttachment">
+                <VisualBasicValue x:TypeArguments="x:String" ExpressionText="Screenshot" />
+              </InArgument>
+              <InArgument x:TypeArguments="x:String" x:Key="in_OutlookAccount">
+                <VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_OutlookAccount" />
+              </InArgument>
+            </ui:InvokeWorkflowFile.Arguments>
+          </ui:InvokeWorkflowFile>
+          <Throw Exception="[New SelectorNotFoundException(&quot;SHA1 home page isn't responding&quot;)]" sap:VirtualizedContainerService.HintSize="388,90" sap2010:WorkflowViewState.IdRef="Throw_2" />
         </Sequence>
       </uix:NCheckState.IfNotExists>
       <uix:NCheckState.Target>
